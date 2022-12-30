@@ -9,7 +9,7 @@
  
 <br/>
 
-- Rode primeiro o backend: https://github.com/kauan777/backend-curseduca-ps.git
+- Rode primeiro o backend: https://github.com/kauan777/livraria-backend.git
 
 <br/>
 
