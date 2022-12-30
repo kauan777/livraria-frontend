@@ -1,7 +1,7 @@
 import { Navbar, Link, Text, Avatar, Dropdown, Badge } from "@nextui-org/react";
 import { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { CartContext, useCart } from "../contexts/CartContex";
+import { useCart } from "../contexts/CartContex";
 import { formatCurrency } from "../utils/formatCurrency";
 import { ModalCart } from "./Cart/ModalCart";
 
