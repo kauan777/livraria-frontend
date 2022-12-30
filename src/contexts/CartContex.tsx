@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { setCookie, parseCookies, destroyCookie } from "nookies";
 import { createContext, ReactNode, useContext, useState } from "react";
