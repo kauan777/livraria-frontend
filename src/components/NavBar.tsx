@@ -50,12 +50,13 @@ export function NavBar({ currentPage }: NavBarProps) {
           },
         }}
       >
-        <button onClick={() => setIsVisibleCartModal(true)}>
-          <Badge content={count} isInvisible={count == 0} color="error">
-            <AiOutlineShoppingCart size={23} />
-          </Badge>
-        </button>
-
+        {currentPage !== "orders" && (
+          <button onClick={() => setIsVisibleCartModal(true)}>
+            <Badge content={count} isInvisible={count == 0} color="error">
+              <AiOutlineShoppingCart size={23} />
+            </Badge>
+          </button>
+        )}
         <Dropdown placement="bottom-right">
           <Navbar.Item>
             <Dropdown.Trigger>
@@ -85,11 +86,9 @@ export function NavBar({ currentPage }: NavBarProps) {
               </Text>
             </Dropdown.Item>
             <Dropdown.Item key="order" withDivider>
-              Ver pedidos
-            </Dropdown.Item>
-
-            <Dropdown.Item key="cart">
-              <span>Carrinho</span>
+              <Navbar.Link className="w-full" href="/orders">
+                Ver pedidos
+              </Navbar.Link>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
