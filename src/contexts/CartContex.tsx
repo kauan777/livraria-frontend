@@ -26,12 +26,23 @@ export const CartContext = createContext({} as CartContextProvider);
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cart, setCart] = useState<BookProps[]>([]);
-  const [walletBallance, setWalletBalance] = useState<number>(300);
+  const [walletBallance, setWalletBalance] = useState<number>(() => {
+    const { walletBallance: walletBallanceCookie } = parseCookies();
+
+    if (!walletBallanceCookie) {
+      return 500;
+    }
+    return Number(walletBallanceCookie);
+  });
 
   useEffect(() => {
     const { cart: cartCookie } = parseCookies();
+    const { walletBallance: walletBallanceCookie } = parseCookies();
     if (cartCookie) {
       setCart(JSON.parse(cartCookie));
+    }
+    if (walletBallance) {
+      setWalletBalance(Number(walletBallanceCookie));
     }
   }, []);
 
@@ -55,10 +66,18 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     destroyCookie(null, "cart");
   }, [cart]);
 
+  useEffect(() => {
+    saveWalletBalnaceToCookie();
+  }, [buy]);
+
   function saveCartToCookie() {
     setCookie(null, "cart", JSON.stringify(cart), {
       maxAge: 60 * 60 * 60 * 1, // 1 hour
     });
+  }
+
+  function saveWalletBalnaceToCookie() {
+    setCookie(null, "walletBallance", walletBallance.toString());
   }
 
   function handleAddItemToCart(product: BookProps) {
