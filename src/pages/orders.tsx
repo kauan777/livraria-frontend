@@ -1,9 +1,7 @@
-import { useEffect } from "react";
 import { Table, Row, Col, Tooltip, User, Text, Badge } from "@nextui-org/react";
 import { useState } from "react";
 BiSearchAlt;
 import { BiSearchAlt } from "react-icons/bi";
-import { SlClose } from "react-icons/sl";
 import { api } from "../utils/api";
 import { formatCurrency } from "../utils/formatCurrency";
 import { formatDate } from "../utils/formatDate";
